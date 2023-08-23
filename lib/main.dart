@@ -111,7 +111,7 @@ class _HomePageState extends State<HomePage> {
                       widget.press.call();
                     });
                   },
-                  child: const Text('Change')))
+                  child: const Text('Change'))),
         ],
       ),
     );
