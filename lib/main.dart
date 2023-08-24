@@ -105,14 +105,13 @@ class _HomePageState extends State<HomePage> {
         children: [
           Center(child: Text(Str.of(context).asd)),
           Center(
-            child: ElevatedButton(
-                onPressed: () {
-                  setState(() {
-                    widget.press.call();
-                  });
-                },
-                child: const Text('Change')),
-          ),
+              child: ElevatedButton(
+                  onPressed: () {
+                    setState(() {
+                      widget.press.call();
+                    });
+                  },
+                  child: const Text('Change')))
         ],
       ),
     );

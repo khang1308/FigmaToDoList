@@ -56,7 +56,7 @@ class _NoPaymentState extends State<NoPayment> {
               height: 32,
             ),
             Container(
-              width: 309,
+              margin: const EdgeInsets.symmetric(horizontal: 32),
               padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 16),
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(16),

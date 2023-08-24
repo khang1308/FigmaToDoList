@@ -56,8 +56,8 @@ class _SavedState extends State<Saved> {
               height: 32,
             ),
             Container(
-            width: 309,
               padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 16),
+              margin: const EdgeInsets.symmetric(horizontal: 32),
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(16),
                   color: const Color(0xffE3562A)),
