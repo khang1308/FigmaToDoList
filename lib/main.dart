@@ -1,14 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:quizz_app/screen/add_list.dart';
 
 import 'package:quizz_app/screen/intro.dart';
 import 'package:quizz_app/screen/loginscreen.dart';
 import 'package:quizz_app/screen/more_list.dart';
 import 'package:quizz_app/screen/splash.dart';
+import 'package:quizz_app/widget/items.dart';
 
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'gen/localization/l10n.dart';
+import 'homecreen/choose.dart';
+import 'homecreen/lesson.dart';
+import 'homecreen/product.dart';
+import 'homecreen/question.dart';
+import 'homecreen/results.dart';
+import 'homecreen/results1.dart';
 
 Future<void> main(List<String> args) async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -47,13 +55,32 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
       // home: HomeCreen(),
       initialRoute: '/',
-      routes: {
-        Splash.routeName: (context) => const Splash(),
-        Introduce.routeName: (context) => const Introduce(),
-        LoginScreen.routeName: (context) => const LoginScreen(),
-        Morelist.routeName: (context) => const Morelist(),
-        // AddList.routeName: (context) => const AddList(),
+      // routes: {
+      onGenerateRoute: (RouteSettings settings) {
+        switch (settings.name) {
+          case '/':
+            return MaterialPageRoute(builder: (context) => const Splash());
+          case '/intro':
+            return MaterialPageRoute(builder: (context) => const Introduce());
+          case '/login':
+            return MaterialPageRoute(builder: (context) => const LoginScreen());
+          case '/list':
+            return MaterialPageRoute(builder: (context) => const Morelist());
+          case '/add':
+            return MaterialPageRoute(
+                builder: (context) => AddList(onAdd: (TodoModel todo) {
+                      TodoModel(content: 'todoList', title: 'todoList');
+                    }));
+        }
       },
+
+      //   Splash.routeName: (context) => const Splash(),
+      //   Introduce.routeName: (context) => const Introduce(),
+      //   LoginScreen.routeName: (context) => const LoginScreen(),
+      //   Morelist.routeName: (context) => const Morelist(),
+      //   // AddList.routeName: (context) => const AddList(),
+
+      // },
       debugShowCheckedModeBanner: false,
       supportedLocales: Str.delegate.supportedLocales,
       // ignore: unnecessary_const

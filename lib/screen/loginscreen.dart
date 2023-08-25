@@ -17,23 +17,19 @@ class _LoginScreenState extends State<LoginScreen> {
             child: Column(
           children: [
             Container(
-              padding: const EdgeInsets.only(left: 16, top: 96),
+              padding: const EdgeInsets.only(left: 16, top: 96, right: 16),
               child: Column(children: [
                 SizedBox(
-                  width: 343,
-                  height: 253,
                   child: Image.asset('asset/images/Login1.png'),
                 ),
                 Container(
                   width: 375,
                   height: 109,
-                  padding: const EdgeInsets.only(left: 16),
+                  padding: const EdgeInsets.only(left: 16, right: 16),
                   child: Column(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         const SizedBox(
-                          width: 341,
-                          height: 32,
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
@@ -46,8 +42,6 @@ class _LoginScreenState extends State<LoginScreen> {
                           ),
                         ),
                         const SizedBox(
-                          width: 341,
-                          height: 21,
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
@@ -110,8 +104,6 @@ class _LoginScreenState extends State<LoginScreen> {
                   children: [
                     Form(
                       child: Container(
-                        width: 343,
-                        height: 53,
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(12)),
                         child: TextFormField(
@@ -135,35 +127,28 @@ class _LoginScreenState extends State<LoginScreen> {
                     const SizedBox(
                       height: 20,
                     ),
-                    SizedBox(
-                      width: 343,
-                      height: 53,
-                      child: TextFormField(
-                        obscureText: true,
-                        decoration: const InputDecoration(
-                          labelText: 'Password',
-                          suffixIcon: Icon(Icons.visibility),
-                          border: OutlineInputBorder(),
-                        ),
-                        autovalidateMode: AutovalidateMode.onUserInteraction,
-                        validator: (value) {
-                          if (value == null) {
-                            return 'Hay dien mat khau';
-                          } else if (value.length < 6) {
-                            return 'Mật khẩu quá ngắn';
-                          } else {
-                            return null;
-                          }
-                        },
+                    TextFormField(
+                      obscureText: true,
+                      decoration: const InputDecoration(
+                        labelText: 'Password',
+                        suffixIcon: Icon(Icons.visibility),
+                        border: OutlineInputBorder(),
                       ),
+                      autovalidateMode: AutovalidateMode.onUserInteraction,
+                      validator: (value) {
+                        if (value == null) {
+                          return 'Hay dien mat khau';
+                        } else if (value.length < 6) {
+                          return 'Mật khẩu quá ngắn';
+                        } else {
+                          return null;
+                        }
+                      },
                     ),
                     const SizedBox(
                       height: 20,
                     ),
                   ],
-                ),
-                const SizedBox(
-                  height: 16,
                 ),
                 const Text(
                   'Forgot Password?',
@@ -172,25 +157,27 @@ class _LoginScreenState extends State<LoginScreen> {
                 const SizedBox(
                   height: 16,
                 ),
-                Container(
-                  width: 343,
-                  height: 56,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(16),
-                    color: const Color(0xffE3562A),
+                ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(16)),
+                    backgroundColor: const Color(0xffE3562A),
                   ),
-                  child: ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                        backgroundColor: const Color(0xffE3562A)),
-                    onPressed: () {
-                      Navigator.of(context).pushNamed('/list');
-                    },
-                    child: const Text(
-                      'Log in',
-                      style: TextStyle(
-                          fontSize: 15,
-                          fontWeight: FontWeight.bold,
-                          color: Color(0xffFFFFFF)),
+                  onPressed: () {
+                    Navigator.of(context).pushNamed('/list');
+                  },
+                  child: Container(
+                    width: double.infinity,
+                    margin: const EdgeInsets.symmetric(horizontal: 32),
+                    padding: const EdgeInsets.symmetric(vertical: 16),
+                    child: const Center(
+                      child: Text(
+                        'Log in',
+                        style: TextStyle(
+                            fontSize: 15,
+                            fontWeight: FontWeight.bold,
+                            color: Color(0xffFFFFFF)),
+                      ),
                     ),
                   ),
                 ),

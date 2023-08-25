@@ -52,7 +52,8 @@ class _Results1State extends State<Results1> {
               height: 125,
             ),
             Container(
-              padding: const EdgeInsets.symmetric(horizontal: 116, vertical: 17),
+              padding:
+                  const EdgeInsets.symmetric(horizontal: 116, vertical: 17),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [

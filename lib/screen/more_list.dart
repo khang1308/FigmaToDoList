@@ -65,14 +65,13 @@ class _MorelistState extends State<Morelist> {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () async {
-          await Navigator.of(context).push(
-            MaterialPageRoute(
-              builder: (context) => AddList(onAdd: (todoCuaKhang) {
-                setState(() {
-                  todolist.add(todoCuaKhang);
-                });
-              }),
-            ),
+          await Navigator.of(context).pushNamed(
+            '/add',
+            arguments: AddList(onAdd: (todoCuaKhang) {
+              setState(() {
+                todolist.add(todoCuaKhang);
+              });
+            }),
           );
           final prefs = await SharedPreferences.getInstance();
           List<String> todoListStr =
@@ -111,33 +110,28 @@ class _MorelistState extends State<Morelist> {
                                   children: [
                                     InkWell(
                                         onTap: () async {
-                                          await Navigator.push(
+                                          await Navigator.pushNamed(
                                             context,
-                                            MaterialPageRoute(
-                                              builder: (context) {
-                                                return EditScreen(
-                                                  todo: todolist[index],
-                                                  onEdit: (todoCuaKhang) {
-                                                    setState(() async {
-                                                      todolist[index] =
-                                                          todoCuaKhang;
-                                                      final prefs =
-                                                          await SharedPreferences
-                                                              .getInstance();
-                                                      List<String> todoListStr =
-                                                          todolist
-                                                              .map((e) =>
-                                                                  jsonEncode(e
-                                                                      .toMap()))
-                                                              .toList();
-                                                      prefs.setStringList(
-                                                          "todoList",
-                                                          todoListStr);
-                                                    });
-                                                  },
-                                                );
+                                            EditScreen(
+                                              todo: todolist[index],
+                                              onEdit: (todoCuaKhang) {
+                                                setState(() async {
+                                                  todolist[index] =
+                                                      todoCuaKhang;
+                                                  final prefs =
+                                                      await SharedPreferences
+                                                          .getInstance();
+                                                  List<String> todoListStr =
+                                                      todolist
+                                                          .map((e) =>
+                                                              jsonEncode(
+                                                                  e.toMap()))
+                                                          .toList();
+                                                  prefs.setStringList(
+                                                      "todoList", todoListStr);
+                                                });
                                               },
-                                            ),
+                                            ) as String,
                                           );
                                         },
                                         child: const Icon(Icons.edit)),

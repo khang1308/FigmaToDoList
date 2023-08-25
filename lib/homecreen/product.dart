@@ -23,7 +23,6 @@ class _ProductDetailState extends State<ProductDetail> {
           ),
           title: const Text(
             'HTML',
-           
             style: TextStyle(
                 fontSize: 24, fontWeight: FontWeight.w500, color: Colors.black),
           )),
@@ -34,7 +33,7 @@ class _ProductDetailState extends State<ProductDetail> {
             height: 24,
           ),
           Container(
-            padding: const EdgeInsets.only(right: 16, left: 16),
+            padding: const EdgeInsets.symmetric(horizontal: 16),
             child: Column(
               children: [
                 Row(
@@ -98,23 +97,27 @@ class _ProductDetailState extends State<ProductDetail> {
                 const SizedBox(
                   height: 53,
                 ),
-                Container(
-                  width: 343,
-                  height: 56,
-                  decoration: const BoxDecoration(
-                    color: Color(0xffE3562A),
-                  ),
+                Padding(
+                  padding: const EdgeInsets.all(16.0),
                   child: ElevatedButton(
                     style: ElevatedButton.styleFrom(
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(16)),
                       backgroundColor: const Color(0xffE3562A),
                     ),
                     onPressed: () {},
-                    child: const Text(
-                      'Log in',
-                      style: TextStyle(
-                          fontSize: 15,
-                          fontWeight: FontWeight.bold,
-                          color: Color(0xffFFFFFF)),
+                    child: Container(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 32, vertical: 16),
+                      child: const Center(
+                        child: Text(
+                          'Log in',
+                          style: TextStyle(
+                              fontSize: 15,
+                              fontWeight: FontWeight.bold,
+                              color: Color(0xffFFFFFF)),
+                        ),
+                      ),
                     ),
                   ),
                 ),

@@ -107,8 +107,7 @@ class _HomeCreenState extends State<HomeCreen> {
                             shape: MaterialStateProperty.all<
                                     RoundedRectangleBorder>(
                                 RoundedRectangleBorder(
-                                    borderRadius:
-                                        BorderRadius.circular(20)))),
+                                    borderRadius: BorderRadius.circular(20)))),
                         onPressed: () {},
                         child: const Text(
                           "#CSS",
@@ -121,8 +120,7 @@ class _HomeCreenState extends State<HomeCreen> {
                             shape: MaterialStateProperty.all<
                                     RoundedRectangleBorder>(
                                 RoundedRectangleBorder(
-                                    borderRadius:
-                                        BorderRadius.circular(20)))),
+                                    borderRadius: BorderRadius.circular(20)))),
                         onPressed: () {},
                         child: const Text(
                           "#UX",
@@ -135,8 +133,7 @@ class _HomeCreenState extends State<HomeCreen> {
                             shape: MaterialStateProperty.all<
                                     RoundedRectangleBorder>(
                                 RoundedRectangleBorder(
-                                    borderRadius:
-                                        BorderRadius.circular(20)))),
+                                    borderRadius: BorderRadius.circular(20)))),
                         onPressed: () {},
                         child: const Text(
                           "#Swift",
@@ -149,8 +146,7 @@ class _HomeCreenState extends State<HomeCreen> {
                             shape: MaterialStateProperty.all<
                                     RoundedRectangleBorder>(
                                 RoundedRectangleBorder(
-                                    borderRadius:
-                                        BorderRadius.circular(20)))),
+                                    borderRadius: BorderRadius.circular(20)))),
                         onPressed: () {},
                         child: const Text(
                           "#UI",
