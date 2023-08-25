@@ -43,7 +43,7 @@ class _MorelistState extends State<Morelist> {
       //và gán nó cho titles, nếu ko có từ khóa đó thì gán là list rỗng "[]"
       //từ khóa ở đây phải trùng với từ khóa bạn gọi setStringList bên dưới.
       //jsonDecode là convert từ String thành kiểu dữ liệu dynamic
-      
+
       todolist = prefs
           .getStringList("todoList")!
           .map((e) => TodoModel.fromMap(jsonDecode(e)))
@@ -117,23 +117,23 @@ class _MorelistState extends State<Morelist> {
                                               builder: (context) {
                                                 return EditScreen(
                                                   todo: todolist[index],
-                                                  onEdit: (todoCuaKhang) async {
-                                                    setState(() {
+                                                  onEdit: (todoCuaKhang) {
+                                                    setState(() async {
                                                       todolist[index] =
                                                           todoCuaKhang;
+                                                      final prefs =
+                                                          await SharedPreferences
+                                                              .getInstance();
+                                                      List<String> todoListStr =
+                                                          todolist
+                                                              .map((e) =>
+                                                                  jsonEncode(e
+                                                                      .toMap()))
+                                                              .toList();
+                                                      prefs.setStringList(
+                                                          "todoList",
+                                                          todoListStr);
                                                     });
-                                                    final prefs =
-                                                        await SharedPreferences
-                                                            .getInstance();
-                                                    List<String> todoListStr =
-                                                        todolist
-                                                            .map((e) =>
-                                                                jsonEncode(
-                                                                    e.toMap()))
-                                                            .toList();
-                                                    prefs.setStringList(
-                                                        "todoList",
-                                                        todoListStr);
                                                   },
                                                 );
                                               },
