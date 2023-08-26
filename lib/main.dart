@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:quizz_app/screen/add_list.dart';
 
+
+import 'package:quizz_app/screen/add_list.dart';
 import 'package:quizz_app/screen/intro.dart';
 import 'package:quizz_app/screen/loginscreen.dart';
 import 'package:quizz_app/screen/more_list.dart';
@@ -11,12 +12,6 @@ import 'package:quizz_app/widget/items.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'gen/localization/l10n.dart';
-import 'homecreen/choose.dart';
-import 'homecreen/lesson.dart';
-import 'homecreen/product.dart';
-import 'homecreen/question.dart';
-import 'homecreen/results.dart';
-import 'homecreen/results1.dart';
 
 Future<void> main(List<String> args) async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -67,11 +62,13 @@ class _MyAppState extends State<MyApp> {
           case '/list':
             return MaterialPageRoute(builder: (context) => const Morelist());
           case '/add':
+            final void Function(TodoModel todo) onAdd =
+                settings.arguments as void Function(TodoModel todo);
+
             return MaterialPageRoute(
-                builder: (context) => AddList(onAdd: (TodoModel todo) {
-                      TodoModel(content: 'todoList', title: 'todoList');
-                    }));
+                builder: (context) => AddList(onAdd: onAdd));
         }
+        return null;
       },
 
       //   Splash.routeName: (context) => const Splash(),
@@ -109,7 +106,8 @@ class _MyAppState extends State<MyApp> {
       // home: NotFound(),
       // home: NoPayment(),
       // home: Saved(),
-      // home: Payment()
+      // home: Payment(),
+      // home: AllTask(),
     );
   }
 }
