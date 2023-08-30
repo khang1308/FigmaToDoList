@@ -17,3 +17,11 @@ class TodoModel {
     };
   }
 }
+
+class EditScreenArg {
+  final Future<void> Function(TodoModel todo) onEdit;
+  // static const String routeName = '/EditScreen';
+  final TodoModel todo;
+
+  EditScreenArg({required this.onEdit, required this.todo});
+}

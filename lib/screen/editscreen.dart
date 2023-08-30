@@ -5,11 +5,11 @@ import 'package:quizz_app/widget/items.dart';
 //Thì b1: là khai báo biến như dòng 9, rồi thêm biến đó vào Constructor
 //line 8 là constructor: nghĩa là khởi tạo, xem dart oop là biết :D
 class EditScreen extends StatefulWidget {
-  const EditScreen({super.key, required this.onEdit, required this.todo});
-  final void Function(TodoModel todo) onEdit;
-
-  final TodoModel todo;
-
+  const EditScreen({super.key, required this.arguments});
+  // final void Function(TodoModel todo) onEdit;
+  static const String routeName = '/EditScreen';
+  // final TodoModel todo;
+  final EditScreenArg arguments;
   @override
   State<EditScreen> createState() => _EditScreenState();
 }
@@ -24,8 +24,8 @@ class _EditScreenState extends State<EditScreen> {
     //vì đây là statefulWidget nên những muốn gọi "text" ở trên
     // thì phải là widget.text, nếu là stateless thôi,
     // thì chỉ đơn giản gọi "text" thôi.
-    titles.text = widget.todo.title;
-    contents.text = widget.todo.content;
+    titles.text = widget.arguments.todo.title;
+    contents.text = widget.arguments.todo.content;
     // controller1.text = widget.content;
   }
 
@@ -77,7 +77,7 @@ class _EditScreenState extends State<EditScreen> {
                 Navigator.pop(
                   context,
                 );
-                widget.onEdit(
+                widget.arguments.onEdit(
                     TodoModel(title: titles.text, content: contents.text));
               },
               child: const Text("Save"),

@@ -254,14 +254,6 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
-  flutter_checkbox_dialog:
-    dependency: "direct main"
-    description:
-      name: flutter_checkbox_dialog
-      sha256: "3d353418a5fa86cae0e521f79af1b857298a8d01f2d253faf526f42cccc001a7"
-      url: "https://pub.dev"
-    source: hosted
-    version: "0.0.1"
   flutter_gen_core:
     dependency: transitive
     description:

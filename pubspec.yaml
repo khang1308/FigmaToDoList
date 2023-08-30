@@ -46,10 +46,6 @@ dependencies:
   smooth_page_indicator: ^1.1.0
   flutter_slidable: ^3.0.0
   confirm_dialog: ^1.0.2
-  flutter_checkbox_dialog: ^0.0.1
-
-
-
 
   
 dev_dependencies:

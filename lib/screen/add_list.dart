@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:quizz_app/widget/items.dart';
 
 class AddList extends StatefulWidget {
-  static const String routeName = "/add";
+  static const String routeName = "/AddList";
   const AddList({super.key, required this.onAdd});
   final void Function(TodoModel todo) onAdd;
   @override
@@ -67,5 +67,6 @@ class _AddListState extends State<AddList> {
             )
           ]);
         })));
+
   }
 }

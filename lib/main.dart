@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 
-
 import 'package:quizz_app/screen/add_list.dart';
+import 'package:quizz_app/screen/editscreen.dart';
 import 'package:quizz_app/screen/intro.dart';
 import 'package:quizz_app/screen/loginscreen.dart';
 import 'package:quizz_app/screen/more_list.dart';
@@ -53,15 +53,26 @@ class _MyAppState extends State<MyApp> {
       // routes: {
       onGenerateRoute: (RouteSettings settings) {
         switch (settings.name) {
-          case '/':
+          case Splash.routeName:
             return MaterialPageRoute(builder: (context) => const Splash());
-          case '/intro':
+          case Introduce.routeName:
             return MaterialPageRoute(builder: (context) => const Introduce());
-          case '/login':
+          case LoginScreen.routeName:
             return MaterialPageRoute(builder: (context) => const LoginScreen());
-          case '/list':
+          case Morelist.routeName:
             return MaterialPageRoute(builder: (context) => const Morelist());
-          case '/add':
+          case EditScreen.routeName:
+            // final void Function(TodoModel todo) onEdit =
+
+            // settings.arguments as void Function(TodoModel tdo);
+            final EditScreenArg arg = settings.arguments as EditScreenArg;
+
+            return MaterialPageRoute(
+                builder: (context) => EditScreen(
+                      arguments: arg,
+                    ));
+          // ignore: unreachable_switch_case
+          case AddList.routeName:
             final void Function(TodoModel todo) onAdd =
                 settings.arguments as void Function(TodoModel todo);
 

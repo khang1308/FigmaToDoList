@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:quizz_app/screen/more_list.dart';
 
 class LoginScreen extends StatefulWidget {
   static const String routeName = "/login";
@@ -164,7 +165,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     backgroundColor: const Color(0xffE3562A),
                   ),
                   onPressed: () {
-                    Navigator.of(context).pushNamed('/list');
+                    Navigator.of(context).pushNamed(Morelist.routeName);
                   },
                   child: Container(
                     width: double.infinity,

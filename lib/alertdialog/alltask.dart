@@ -8,8 +8,21 @@ class AllTask extends StatefulWidget {
 }
 
 class _AllTaskState extends State<AllTask> {
+  bool isChecked = false;
   @override
   Widget build(BuildContext context) {
+    Color getColor(Set<MaterialState> states) {
+      const Set<MaterialState> interactiveStates = <MaterialState>{
+        MaterialState.pressed,
+        MaterialState.hovered,
+        MaterialState.focused,
+      };
+      if (states.any(interactiveStates.contains)) {
+        return Colors.white;
+      }
+      return Colors.blue;
+    }
+
     return Scaffold(
       appBar: AppBar(
         title: const Text('All Task'),
@@ -36,9 +49,24 @@ class _AllTaskState extends State<AllTask> {
                     context: context,
                     builder: (context) => AlertDialog(
                           title: const Text('Create task'),
-                          content: const TextField(
-                            decoration:
-                                InputDecoration(labelText: 'Wrire task here'),
+                          content: Row(
+                            children: [
+                              const TextField(
+                                decoration: InputDecoration(
+                                    labelText: 'Wrire task here'),
+                              ),
+                              Checkbox(
+                                checkColor: Colors.red,
+                                fillColor:
+                                    MaterialStateProperty.resolveWith(getColor),
+                                value: isChecked,
+                                onChanged: (bool? value) {
+                                  setState(() {
+                                    isChecked = value!;
+                                  });
+                                },
+                              ),
+                            ],
                           ),
                           actions: [
                             TextButton(
@@ -47,11 +75,41 @@ class _AllTaskState extends State<AllTask> {
                                 },
                                 child: const Text('SUBMIT'))
                           ],
-                        ));
+                        ),
+                        );
               },
             ),
           ),
         ],
+      ),
+      bottomNavigationBar: Container(
+        decoration: BoxDecoration(border: Border.all()),
+        padding: const EdgeInsets.all(15),
+        child:
+            Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
+          TextButton(
+            onPressed: () {},
+            child: const Text(
+              'Complete',
+              style: TextStyle(fontSize: 15, fontWeight: FontWeight.w400),
+            ),
+          ),
+          TextButton(
+            onPressed: () {},
+            child: const Text(
+              'All',
+              style: TextStyle(fontSize: 15, fontWeight: FontWeight.w400),
+            ),
+          ),
+          TextButton(
+            onPressed: () {},
+            child: const Text(
+              'Incomplete',
+              style: TextStyle(fontSize: 15, fontWeight: FontWeight.w500),
+            ),
+          )
+        ],
+        ),
       ),
     );
   }

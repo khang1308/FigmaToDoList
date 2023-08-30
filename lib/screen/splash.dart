@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:quizz_app/screen/loginscreen.dart';
 
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -39,7 +40,8 @@ class _SplashState extends State<Splash> {
           .pushNamedAndRemoveUntil(Introduce.routeName, (route) => false);
     } else {
       // ignore: use_build_context_synchronously
-      Navigator.of(context).pushNamedAndRemoveUntil("/login", (route) => false);
+      Navigator.of(context)
+          .pushNamedAndRemoveUntil(LoginScreen.routeName, (route) => false);
     }
   }
 

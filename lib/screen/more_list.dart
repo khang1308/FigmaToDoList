@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:quizz_app/screen/add_list.dart';
+
 import 'package:quizz_app/widget/items.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -65,14 +66,12 @@ class _MorelistState extends State<Morelist> {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () async {
-          await Navigator.of(context).pushNamed(
-            '/add',
-            arguments: AddList(onAdd: (todoCuaKhang) {
-              setState(() {
-                todolist.add(todoCuaKhang);
-              });
-            }),
-          );
+          await Navigator.of(context).pushNamed(AddList.routeName,
+              arguments: (TodoModel todoCuaKhang) {
+            setState(() {
+              todolist.add(todoCuaKhang);
+            });
+          });
           final prefs = await SharedPreferences.getInstance();
           List<String> todoListStr =
               todolist.map((e) => jsonEncode(e.toMap())).toList();
@@ -110,29 +109,52 @@ class _MorelistState extends State<Morelist> {
                                   children: [
                                     InkWell(
                                         onTap: () async {
-                                          await Navigator.pushNamed(
-                                            context,
-                                            EditScreen(
-                                              todo: todolist[index],
-                                              onEdit: (todoCuaKhang) {
-                                                setState(() async {
-                                                  todolist[index] =
-                                                      todoCuaKhang;
+                                          Navigator.of(context).pushNamed(
+                                              EditScreen.routeName,
+                                              arguments: EditScreenArg(
+                                                todo: todolist[index],
+                                                onEdit: (TodoModel
+                                                    todoCuaKhang) async {
                                                   final prefs =
                                                       await SharedPreferences
                                                           .getInstance();
-                                                  List<String> todoListStr =
-                                                      todolist
-                                                          .map((e) =>
-                                                              jsonEncode(
-                                                                  e.toMap()))
-                                                          .toList();
-                                                  prefs.setStringList(
-                                                      "todoList", todoListStr);
-                                                });
-                                              },
-                                            ) as String,
-                                          );
+                                                  setState(() {
+                                                    todolist[index] =
+                                                        todoCuaKhang;
+
+                                                    List<String> todoListStr =
+                                                        todolist
+                                                            .map((e) =>
+                                                                jsonEncode(
+                                                                    e.toMap()))
+                                                            .toList();
+                                                    prefs.setStringList(
+                                                        "todoList",
+                                                        todoListStr);
+                                                  });
+                                                },
+                                              ));
+                                          // await Navigator.of(context)
+                                          //     .pushNamed(EditScreen(
+                                          //  arguments: todolist[index],
+                                          //   onEdit: (TodoModel todoCuaKhang) {
+                                          //     setState(() async {
+                                          //       todolist[index] = todoCuaKhang;
+                                          //       final prefs =
+                                          //           await SharedPreferences
+                                          //               .getInstance();
+                                          //       List<String> todoListStr =
+                                          //           todolist
+                                          //               .map((e) => jsonEncode(
+                                          //                   e.toMap()))
+                                          //               .toList();
+                                          //       prefs.setStringList(
+                                          //           "todoList", todoListStr);
+                                          //     });
+                                          //   },
+                                          //   arguments:
+                                          //       (TodoModel todoCuaKhang) {},
+                                          // ) as String);
                                         },
                                         child: const Icon(Icons.edit)),
                                     InkWell(
